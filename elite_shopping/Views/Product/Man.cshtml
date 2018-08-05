@@ -1,0 +1,299 @@
+﻿
+@{
+    ViewBag.Title = "Men Products";
+}
+
+
+
+<div class="row" style="margin:0">
+    <h3 style="float:left;">Men Products </h3>
+    <div class="pull-right"><a href="javascript:void(0)" class="clear_search_items">Clear</a></div>
+
+    <div class="pull-right" style="
+    margin-right:  50px;
+">
+
+        <select name="sort_type" class="sort_type">
+            <option value="0">Sort Products</option>
+            <option value="1">Lowest Price First</option>
+            <option value="2">Highest Price First</option>
+            <option value="3">From Old To New</option>
+            <option value="4">From New To Old</option>
+        </select>
+
+
+
+    </div>
+
+</div>
+
+<div id="product_content">
+
+
+
+</div>
+
+@section sidebar{
+    @{
+        Html.RenderAction("MenCategories", "Category");
+    }
+
+}
+
+
+@section script{
+
+    <script>
+        //class="search_item_sleeve"
+
+
+        var category = "", fit = "", color = [], size = [], material = "", sleeve = "", pattern = "", neckline = "", pocket = "";
+
+        $('.search_item_category').click(function () {
+            category = $(this).data('val');
+            ajax_function(category, fit, color, size, material, sleeve, pattern, neckline, pocket);
+        });
+
+        $('.search_item_fit').click(function () {
+            fit = $(this).data('val');
+            ajax_function(category, fit, color, size, material, sleeve, pattern, neckline, pocket);
+        })
+
+        $('.search_item_color').click(function () {
+            var color_val = $(this).data('val');
+            if (color.indexOf(color_val) == -1) {
+                color[color.length] = color_val;
+            }
+            ajax_function(category, fit, color, size, material, sleeve, pattern, neckline, pocket);
+        })
+
+        $('.search_item_size').click(function () {
+            var size_val = $(this).data('val');
+            if (size.indexOf(size_val) == -1) {
+                size[size.length] = size_val;
+            }
+            ajax_function(category, fit, color, size, material, sleeve, pattern, neckline, pocket);
+        })
+
+        $('.search_item_material').click(function () {
+            material = $(this).data('val');
+            ajax_function(category, fit, color, size, material, sleeve, pattern, neckline, pocket);
+        })
+
+        $('.search_item_sleeve').click(function () {
+            sleeve = $(this).data('val');
+            ajax_function(category, fit, color, size, material, sleeve, pattern, neckline, pocket);
+        })
+
+        $('.search_item_pattern').click(function () {
+            pattern = $(this).data('val');
+            ajax_function(category, fit, color, size, material, sleeve, pattern, neckline, pocket);
+        })
+
+        $('.search_item_neckline').click(function () {
+            neckline = $(this).data('val');
+            ajax_function(category, fit, color, size, material, sleeve, pattern, neckline, pocket);
+        })
+
+        $('.search_item_pocket').click(function () {
+            pocket = $(this).data('val');
+            ajax_function(category, fit, color, size, material, sleeve, pattern, neckline, pocket);
+        });
+
+        function clear_ajax_elements() {
+            category = "";
+            fit = "";
+            color = []; size = [];
+            material = "";
+            sleeve = "";
+            pattern = "";
+            neckline = "";
+            pocket = "";
+        }
+
+        var new_result="";
+
+
+        $('.sort_type').change(function () {
+            var val = $(this).val();
+
+            if (val > 0) {
+
+                console.log(new_result.data);
+                $.ajax({
+                    type: 'post',
+                    url: '/Product/Sort_Products/',
+                    //dataType: 'json',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({ id: val, pr: new_result.data, pc: new_result.pictures }),
+                    traditional: true,
+                    success: function (result) {
+                        $('#product_content').html('');
+                        $('#product_content').append(result);
+                    },
+
+                    error: function () {
+                        alert('error');
+                    }
+                })
+
+                $.ajax({
+                    type: 'post',
+                    url: '/Product/Sort_Products_Json/',
+                    //dataType: 'json',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({ id: val, pr: new_result.data, pc: new_result.pictures }),
+                    traditional: true,
+                    success: function (result) {
+                        new_result = result;
+
+                        console.log(new_result);
+                    },
+
+                    error: function () {
+                        alert('error');
+                    }
+                })
+
+                
+            }
+        })
+
+
+        $('.clear_search_items').click(function () {
+            clear_ajax_elements();
+        });
+
+        function ajax_function(category, fit, color, size, material, sleeve, pattern, neckline, pocket) {
+            var data = {};
+            data.category_id = category;
+            data.fit_id = fit;
+            data.color = color;
+            data.size = size;
+            data.material_id = material;
+            data.sleeve = sleeve;
+            data.pattern_id = pattern;
+            data.neckline_id = neckline;
+            data.pocket_id = pocket;
+            data.prod_arg = new_result.data;
+
+            $.ajax({
+                type: 'post',
+                url: '/Product/sort/',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function (result) {
+                    console.log(result);
+
+                    new_result = result;
+
+                    var elem = $('.product_list_new')[0];
+
+
+                    $('#product_content').empty();
+
+                    if (Object.keys(result).length > 0) {
+                        for (var i = 0; i < result.data.length / 3; i++) {
+                            var j = 0;
+
+                            var row_fluid = $('<div class="row-fluid"></div>');
+
+                            $('#product_content').append(row_fluid);
+
+                            var ul = $('<ul class="thumbnails"></ul>');
+
+                            row_fluid.append(ul);
+
+
+
+                            for (var h = 0; h < result.data.length; h++) {
+                                if (j < 3) {
+
+
+                                    var li = $('<li class="span4 product_list_new"></li>');
+                                    ul.append(li);
+
+                                    var thumbnail = $('<div class="thumbnail"></div>');
+                                    li.append(thumbnail);
+
+                                    var overlay = $('<a href="/Product/Details/' + result.data[h].id + '" class="overlay"></a>');
+                                    thumbnail.append(overlay);
+
+                                    var zoomTool = $('<a class="zoomTool" href="/Product/Details/' + result.data[h].id + '" title="Zoom" style="display: none;"></a>');
+                                    thumbnail.append(zoomTool);
+                                    zoomTool.append($('<span class="icon-search"></span>'));
+                                    zoomTool.append($('<span>Quick View</span>'));
+
+                                    var pr_image = $('<a href="/Product/Details/' + result.data[h].id + '" class="pr_image"></a>');
+                                    thumbnail.append(pr_image);
+
+                                    for (var img = 0; img < result.pictures.length; img++) {
+                                        if (result.pictures[img].product_id == result.data[h].id && result.pictures[img].medium.length > 0) {
+                                            pr_image.append('<img src=' + result.pictures[img].medium + ' alt=' + result.data[h].name + '>');
+                                            break;
+                                        }
+                                    }
+
+
+                                    var caption = $('<div class="caption cntr"></div>');
+                                    thumbnail.append(caption);
+
+                                    caption.append($('<p class="caption_product_new">' + result.data[h].name + ' </p>'));
+                                    caption.append($('<p><strong> $' + result.data[h].price + '</strong></p>'));
+                                    caption.append($('<h4><a class="shopBtn" href="javascript:void(0)" title="add to cart"> Add to cart </a></h4>'));
+                                    caption.append($('<br class="clr">'));
+
+                                }
+
+                                else
+                                    break;
+
+                                j++;
+
+                            }
+                        }
+                    }
+
+                    else {
+                        $('#product_content').append('$(<h1>There is nothing in database for theese parametres</h1)')
+                    }
+
+
+                }
+            })
+
+        }
+
+        function load_products() {
+            $.ajax({
+                type: 'get',
+                url: '/Product/All_Products/',
+                success: function (result) {
+                    $('#product_content').append(result);
+                }
+            })
+
+        }
+
+        function all_products() {
+            $.ajax({
+                type: 'get',
+                dataType: 'json',
+                url: '/Product/Products_json',
+                success: function (result) {
+                    new_result = result;
+                }
+            })
+        }
+
+        $(document).ready(function () {
+            load_products();
+            all_products();
+        });
+
+
+
+    </script>
+
+}

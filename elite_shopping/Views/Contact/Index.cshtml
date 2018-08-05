@@ -1,0 +1,281 @@
+﻿@*
+
+    @helper adress_helper()
+    {
+    foreach (info inf in Model)
+    {
+            <span>@inf.location</span>
+    }
+    }
+
+    @helper call_helper()
+    {
+    foreach (info call in Model)
+    {
+            <span>@call.phone</span>
+    }
+    }
+
+    @helper mail_helper()
+    {
+    foreach (info email in Model)
+    {
+            <a href="mailto:@email.email"><span>@email.email</span></a>
+    }
+    }
+
+    @helper adress_helper(int k)
+    {
+    int i = 0;
+    foreach (info inf in Model)
+    {
+            <span>@inf.location</span>
+        i++;
+        if (i == k)
+        {
+            break;
+        }
+    }
+    }
+
+    @helper call_helper(int k)
+    {
+    int i = 0;
+    foreach (info call in Model)
+    {
+            <span>@call.phone</span>
+        i++;
+        if (i == k)
+        {
+            break;
+        }
+    }
+    }
+
+    @helper mail_helper(int k)
+    {
+    int i = 0;
+    foreach (info email in Model)
+    {
+            <a href="mailto:@email.email"><span>@email.email</span></a>
+        i++;
+        if (i == k)
+        {
+            break;
+        }
+    }
+    }
+
+
+
+    <!-- /banner_bottom_agile_info -->
+    <div class="page-head_agile_info_w3l">
+        <div class="container">
+            <h3>C<span>ontact Us </span></h3>
+            <!--/w3_short-->
+            <div class="services-breadcrumb">
+                <div class="agile_inner_breadcrumb">
+
+                    <ul class="w3_short">
+                        <li><a href="/Home/Index">Home</a><i>|</i></li>
+                        <li>Contact</li>
+                    </ul>
+                </div>
+            </div>
+            <!--//w3_short-->
+        </div>
+    </div>
+    <!--/contact-->
+    <div class="banner_bottom_agile_info">
+        <div class="container">
+            <div class="contact-grid-agile-w3s">
+                <div class="col-md-4 contact-grid-agile-w3">
+                    <div class="contact-grid-agile-w31">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <h4>Address</h4>
+
+                        <p>
+                            @adress_helper()
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 contact-grid-agile-w3">
+                    <div class="contact-grid-agile-w32">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <h4>Call Us</h4>
+                        <p>
+                            @call_helper()
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 contact-grid-agile-w3">
+                    <div class="contact-grid-agile-w33">
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        <h4>Email</h4>
+                        <p>
+                            @mail_helper()
+                        </p>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <div class="contact-w3-agile1 map" data-aos="flip-right">
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100949.24429313939!2d-122.44206553967531!3d37.75102885910819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan+Francisco%2C+CA%2C+USA!5e0!3m2!1sen!2sin!4v1472190196783" class="map" style="border:0" allowfullscreen=""></iframe>
+    </div>
+    <div class="banner_bottom_agile_info">
+        <div class="container">
+            <div class="agile-contact-grids">
+                <div class="agile-contact-left">
+                    <div class="col-md-6 address-grid">
+                        <h4>For More <span>Information</span></h4>
+                        <div class="mail-agileits-w3layouts">
+                            <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                            <div class="contact-right">
+                                <p>Telephone </p>
+                                @call_helper(1)
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="mail-agileits-w3layouts">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                            <div class="contact-right">
+                                <p>Mail </p>
+                                @mail_helper(1)
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="mail-agileits-w3layouts">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <div class="contact-right">
+                                <p>Location</p>
+                                @adress_helper(1)
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <ul class="social-nav model-3d-0 footer-social w3_agile_social two contact">
+                            <li class="share">SHARE ON : </li>
+                            <li>
+                                <a href="#" class="facebook">
+                                    <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                                    <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="twitter">
+                                    <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                                    <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="instagram">
+                                    <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                                    <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="pinterest">
+                                    <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                                    <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 contact-form">
+                        <h4 class="white-w3ls">Contact <span>Form</span></h4>
+                        <form action="/Contact/Add_Message" method="post">
+                            <div class="styled-input agile-styled-input-top">
+                                <input type="text" name="name" required="" maxlength="50">
+                                <label>Name</label>
+                                <span></span>
+                            </div>
+                            <div class="styled-input">
+                                <input type="email" name="email" required="" maxlength="50">
+                                <label>Email</label>
+                                <span></span>
+                            </div>
+                            <div class="styled-input">
+                                <input type="text" name="subject" required="" maxlength="50">
+                                <label>Subject</label>
+                                <span></span>
+                            </div>
+                            <div class="styled-input">
+                                <textarea name="message" required="" maxlength="500"></textarea>
+                                <label>Message</label>
+                                <span></span>
+                            </div>
+                            <input type="submit" value="SEND">
+
+                        </form>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!--//contact-->*@
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+@using elite_shopping.Models;
+
+<h1>Visit us</h1>
+<hr class="soften" />
+<div class="row-fluid">
+    <div class="span8 relative">
+        <iframe style="width:100%; height:350px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.uk/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Newbury+Street,+Boston,+MA,+United+States&amp;aq=1&amp;oq=NewBoston,+MA,+United+States&amp;sll=42.347238,-71.084011&amp;sspn=0.014099,0.033023&amp;ie=UTF8&amp;hq=Newbury+Street,+Boston,+MA,+United+States&amp;t=m&amp;ll=42.348994,-71.088248&amp;spn=0.001388,0.006276&amp;z=18&amp;iwloc=A&amp;output=embed"></iframe>
+
+        @{ 
+            info inf = elite_shopping.Classes.connection.el_entities.info.FirstOrDefault(x => x.id == 1);
+        }
+
+        <div class="absoluteBlk">
+            <div class="well wellsmall">
+                <h4>Contact Details</h4>
+                <h5>
+                    Address: @inf.location<br /><br />
+                    Email: @inf.email<br />
+                    ﻿Phone: @inf.phone<br />
+                </h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="span4">
+        <h4>Email Us</h4>
+        <form class="form-horizontal" method="post" action="/Contact/Add_Message">
+            <fieldset>
+                <div class="control-group">
+
+                    <input type="text" name="name" placeholder="Name" class="input-xlarge" />
+
+                </div>
+                <div class="control-group">
+
+                    <input type="text" name="email" placeholder="Email" class="input-xlarge" />
+
+                </div>
+                <div class="control-group">
+
+                    <input type="text" name="subject" placeholder="Subject" class="input-xlarge" />
+
+                </div>
+                <div class="control-group">
+                    <textarea rows="3" id="textarea" class="input-xlarge" placeholder="Enter your message" name="message"></textarea>
+
+                </div>
+
+                <button class="shopBtn" type="submit">Send email</button>
+
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,1214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="elite_shoppingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="about_us">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="small_text" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="picture" Relationship="Self.FK_picture_about_us" FromRole="about_us" ToRole="picture" />
+  </EntityType>
+  <EntityType Name="base">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="product_features" Relationship="Self.FK_product_features_base" FromRole="base" ToRole="product_features" />
+  </EntityType>
+  <EntityType Name="card">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="card_num" Type="Int32" />
+    <Property Name="expiry_date" Type="DateTime" Precision="3" />
+    <Property Name="security_code" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="cardholder_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cardholder_surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="card_user" Relationship="Self.FK_card_user_card" FromRole="card" ToRole="card_user" />
+    <NavigationProperty Name="order" Relationship="Self.FK_order_card" FromRole="card" ToRole="order" />
+  </EntityType>
+  <EntityType Name="card_user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="card_id" Type="Int32" />
+    <Property Name="user_id" Type="Int32" />
+    <NavigationProperty Name="card" Relationship="Self.FK_card_user_card" FromRole="card_user" ToRole="card" />
+    <NavigationProperty Name="user" Relationship="Self.FK_card_user_user" FromRole="card_user" ToRole="user" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="size" Relationship="Self.FK_size_category1" FromRole="category" ToRole="size" />
+    <NavigationProperty Name="sub_category" Relationship="Self.FK_sub_category_category" FromRole="category" ToRole="sub_category" />
+  </EntityType>
+  <EntityType Name="collection">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="coll_year" Type="Int32" />
+    <NavigationProperty Name="product" Relationship="Self.FK_product_collection" FromRole="collection" ToRole="product" />
+  </EntityType>
+  <EntityType Name="color">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="color_prod_pivot" Relationship="Self.FK_color_prod_pivot_color" FromRole="color" ToRole="color_prod_pivot" />
+  </EntityType>
+  <EntityType Name="color_prod_pivot">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="color_id" Type="Byte" />
+    <Property Name="product_id" Type="Int32" />
+    <NavigationProperty Name="color" Relationship="Self.FK_color_prod_pivot_color" FromRole="color_prod_pivot" ToRole="color" />
+    <NavigationProperty Name="product" Relationship="Self.FK_color_prod_pivot_product" FromRole="color_prod_pivot" ToRole="product" />
+  </EntityType>
+  <EntityType Name="contact_messages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="message" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="discount">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="disc_percent" Type="Byte" />
+    <Property Name="price" Type="Double" />
+    <Property Name="upto" Type="Boolean" />
+    <Property Name="till_date" Type="DateTime" Precision="3" />
+    <Property Name="product_id" Type="Int32" />
+    <Property Name="active" Type="Boolean" />
+    <NavigationProperty Name="product" Relationship="Self.FK_discount_product" FromRole="discount" ToRole="product" />
+  </EntityType>
+  <EntityType Name="fit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="product_features" Relationship="Self.FK_product_features_fit" FromRole="fit" ToRole="product_features" />
+    <NavigationProperty Name="product_features1" Relationship="Self.FK_product_features_fit1" FromRole="fit" ToRole="product_features" />
+  </EntityType>
+  <EntityType Name="info">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="material">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="product_features" Relationship="Self.FK_product_features_material" FromRole="material" ToRole="product_features" />
+  </EntityType>
+  <EntityType Name="message">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="from_user_id" Type="Int32" />
+    <Property Name="to_user_id" Type="Int32" />
+    <Property Name="see" Type="Boolean" />
+    <Property Name="text" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="user" Relationship="Self.FK_message_user" FromRole="message" ToRole="user" />
+    <NavigationProperty Name="user1" Relationship="Self.FK_message_user1" FromRole="message" ToRole="user" />
+  </EntityType>
+  <EntityType Name="neckline">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="product_features" Relationship="Self.FK_product_features_neckline" FromRole="neckline" ToRole="product_features" />
+  </EntityType>
+  <EntityType Name="news_user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prod_id" Type="Int32" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="order_info_id" Type="Int32" />
+    <Property Name="card_id" Type="Int32" />
+    <NavigationProperty Name="card" Relationship="Self.FK_order_card" FromRole="order" ToRole="card" />
+    <NavigationProperty Name="order_info" Relationship="Self.FK_order_order_info" FromRole="order" ToRole="order_info" />
+    <NavigationProperty Name="product" Relationship="Self.FK_order_product" FromRole="order" ToRole="product" />
+    <NavigationProperty Name="user" Relationship="Self.FK_order_user" FromRole="order" ToRole="user" />
+  </EntityType>
+  <EntityType Name="order_info">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="contact_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="country" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="zip" Type="Int32" />
+    <Property Name="phone" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="order" Relationship="Self.FK_order_order_info" FromRole="order_info" ToRole="order" />
+  </EntityType>
+  <EntityType Name="pattern">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="product_features" Relationship="Self.FK_product_features_pattern" FromRole="pattern" ToRole="product_features" />
+  </EntityType>
+  <EntityType Name="picture">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="small" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="medium" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="big" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="product_id" Type="Int32" />
+    <Property Name="services_id" Type="Byte" />
+    <Property Name="about_us_id" Type="Byte" />
+    <Property Name="staff_id" Type="Int32" />
+    <NavigationProperty Name="about_us" Relationship="Self.FK_picture_about_us" FromRole="picture" ToRole="about_us" />
+    <NavigationProperty Name="product" Relationship="Self.FK_picture_product" FromRole="picture" ToRole="product" />
+    <NavigationProperty Name="services" Relationship="Self.FK_picture_services" FromRole="picture" ToRole="services" />
+    <NavigationProperty Name="staff" Relationship="Self.FK_picture_staff" FromRole="picture" ToRole="staff" />
+  </EntityType>
+  <EntityType Name="pocket">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="product_features" Relationship="Self.FK_product_features_pocket" FromRole="pocket" ToRole="product_features" />
+  </EntityType>
+  <EntityType Name="poll">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="poll_choices" Relationship="Self.FK_poll_choices_poll" FromRole="poll" ToRole="poll_choices" />
+  </EntityType>
+  <EntityType Name="poll_choices">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="choice_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="poll_id" Type="Int32" />
+    <NavigationProperty Name="poll" Relationship="Self.FK_poll_choices_poll" FromRole="poll_choices" ToRole="poll" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="add_date" Type="DateTime" Precision="3" />
+    <Property Name="collection_id" Type="Int32" />
+    <Property Name="product_features_id" Type="Int32" />
+    <Property Name="sex_id" Type="Byte" />
+    <Property Name="approved" Type="Boolean" />
+    <Property Name="sub_category_id" Type="Byte" />
+    <Property Name="adder_user" Type="Int32" />
+    <Property Name="price" Type="Double" />
+    <NavigationProperty Name="collection" Relationship="Self.FK_product_collection" FromRole="product" ToRole="collection" />
+    <NavigationProperty Name="color_prod_pivot" Relationship="Self.FK_color_prod_pivot_product" FromRole="product" ToRole="color_prod_pivot" />
+    <NavigationProperty Name="discount" Relationship="Self.FK_discount_product" FromRole="product" ToRole="discount" />
+    <NavigationProperty Name="order" Relationship="Self.FK_order_product" FromRole="product" ToRole="order" />
+    <NavigationProperty Name="picture" Relationship="Self.FK_picture_product" FromRole="product" ToRole="picture" />
+    <NavigationProperty Name="product_info" Relationship="Self.FK_product_info_product" FromRole="product" ToRole="product_info" />
+    <NavigationProperty Name="product_features" Relationship="Self.FK_product_product_features" FromRole="product" ToRole="product_features" />
+    <NavigationProperty Name="product_review" Relationship="Self.FK_product_review_product" FromRole="product" ToRole="product_review" />
+    <NavigationProperty Name="sex_category" Relationship="Self.FK_product_sex_category" FromRole="product" ToRole="sex_category" />
+    <NavigationProperty Name="sub_category" Relationship="Self.FK_product_sub_category" FromRole="product" ToRole="sub_category" />
+    <NavigationProperty Name="user" Relationship="Self.FK_product_user" FromRole="product" ToRole="user" />
+    <NavigationProperty Name="rating" Relationship="Self.FK_rating_product" FromRole="product" ToRole="rating" />
+    <NavigationProperty Name="size_prod_pivot" Relationship="Self.FK_size_prod_pivot_product" FromRole="product" ToRole="size_prod_pivot" />
+  </EntityType>
+  <EntityType Name="product_features">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="material_id" Type="Byte" />
+    <Property Name="neckline_id" Type="Byte" />
+    <Property Name="pattern_id" Type="Byte" />
+    <Property Name="sleeve_id" Type="Byte" />
+    <Property Name="upper_fit_id" Type="Byte" />
+    <Property Name="bottom_fit_id" Type="Byte" />
+    <Property Name="pocket_id" Type="Byte" />
+    <Property Name="base_id" Type="Byte" />
+    <NavigationProperty Name="base" Relationship="Self.FK_product_features_base" FromRole="product_features" ToRole="base" />
+    <NavigationProperty Name="fit" Relationship="Self.FK_product_features_fit" FromRole="product_features" ToRole="fit" />
+    <NavigationProperty Name="fit1" Relationship="Self.FK_product_features_fit1" FromRole="product_features" ToRole="fit" />
+    <NavigationProperty Name="material" Relationship="Self.FK_product_features_material" FromRole="product_features" ToRole="material" />
+    <NavigationProperty Name="neckline" Relationship="Self.FK_product_features_neckline" FromRole="product_features" ToRole="neckline" />
+    <NavigationProperty Name="pattern" Relationship="Self.FK_product_features_pattern" FromRole="product_features" ToRole="pattern" />
+    <NavigationProperty Name="pocket" Relationship="Self.FK_product_features_pocket" FromRole="product_features" ToRole="pocket" />
+    <NavigationProperty Name="product" Relationship="Self.FK_product_product_features" FromRole="product_features" ToRole="product" />
+    <NavigationProperty Name="sleeve" Relationship="Self.FK_product_features_sleeve" FromRole="product_features" ToRole="sleeve" />
+  </EntityType>
+  <EntityType Name="product_info">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="Int32" />
+    <Property Name="text" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="product" Relationship="Self.FK_product_info_product" FromRole="product_info" ToRole="product" />
+  </EntityType>
+  <EntityType Name="product_review">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="product_id" Type="Int32" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="reply_user_id" Type="Int32" />
+    <Property Name="text" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="product" Relationship="Self.FK_product_review_product" FromRole="product_review" ToRole="product" />
+    <NavigationProperty Name="user" Relationship="Self.FK_product_review_user" FromRole="product_review" ToRole="user" />
+    <NavigationProperty Name="user1" Relationship="Self.FK_product_review_user1" FromRole="product_review" ToRole="user" />
+  </EntityType>
+  <EntityType Name="rating">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="Int32" />
+    <Property Name="rating1" Type="Byte" />
+    <NavigationProperty Name="product" Relationship="Self.FK_rating_product" FromRole="rating" ToRole="product" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="user_role" Relationship="Self.FK_user_role_role" FromRole="role" ToRole="user_role" />
+  </EntityType>
+  <EntityType Name="sex_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sex_name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="product" Relationship="Self.FK_product_sex_category" FromRole="sex_category" ToRole="product" />
+    <NavigationProperty Name="sub_category" Relationship="Self.FK_category_sex_category" FromRole="sex_category" ToRole="sub_category" />
+  </EntityType>
+  <EntityType Name="services">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="text" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="picture" Relationship="Self.FK_picture_services" FromRole="services" ToRole="picture" />
+  </EntityType>
+  <EntityType Name="size">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category_id" Type="Byte" />
+    <Property Name="size_name" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="category" Relationship="Self.FK_size_category1" FromRole="size" ToRole="category" />
+    <NavigationProperty Name="size_prod_pivot" Relationship="Self.FK_size_prod_pivot_size1" FromRole="size" ToRole="size_prod_pivot" />
+  </EntityType>
+  <EntityType Name="size_prod_pivot">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="size_id" Type="Byte" />
+    <Property Name="product_id" Type="Int32" />
+    <NavigationProperty Name="product" Relationship="Self.FK_size_prod_pivot_product" FromRole="size_prod_pivot" ToRole="product" />
+    <NavigationProperty Name="size" Relationship="Self.FK_size_prod_pivot_size1" FromRole="size_prod_pivot" ToRole="size" />
+  </EntityType>
+  <EntityType Name="sleeve">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="long_sleeve" Type="Boolean" />
+    <NavigationProperty Name="product_features" Relationship="Self.FK_product_features_sleeve" FromRole="sleeve" ToRole="product_features" />
+  </EntityType>
+  <EntityType Name="staff">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="surname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="staff_role_id" Type="Byte" />
+    <Property Name="facebook_adress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="twitter_adress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="instagram_adress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="linkedin_adress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="picture" Relationship="Self.FK_picture_staff" FromRole="staff" ToRole="picture" />
+    <NavigationProperty Name="staff_role" Relationship="Self.FK_staff_staff_role" FromRole="staff" ToRole="staff_role" />
+    <NavigationProperty Name="user" Relationship="Self.FK_staff_user" FromRole="staff" ToRole="user" />
+  </EntityType>
+  <EntityType Name="staff_role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="staff" Relationship="Self.FK_staff_staff_role" FromRole="staff_role" ToRole="staff" />
+  </EntityType>
+  <EntityType Name="sub_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sex_id" Type="Byte" />
+    <Property Name="sub_category_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="category_id" Type="Byte" />
+    <NavigationProperty Name="category" Relationship="Self.FK_sub_category_category" FromRole="sub_category" ToRole="category" />
+    <NavigationProperty Name="product" Relationship="Self.FK_product_sub_category" FromRole="sub_category" ToRole="product" />
+    <NavigationProperty Name="sex_category" Relationship="Self.FK_category_sex_category" FromRole="sub_category" ToRole="sex_category" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="card_user" Relationship="Self.FK_card_user_user" FromRole="user" ToRole="card_user" />
+    <NavigationProperty Name="message" Relationship="Self.FK_message_user" FromRole="user" ToRole="message" />
+    <NavigationProperty Name="message1" Relationship="Self.FK_message_user1" FromRole="user" ToRole="message" />
+    <NavigationProperty Name="order" Relationship="Self.FK_order_user" FromRole="user" ToRole="order" />
+    <NavigationProperty Name="product" Relationship="Self.FK_product_user" FromRole="user" ToRole="product" />
+    <NavigationProperty Name="product_review" Relationship="Self.FK_product_review_user" FromRole="user" ToRole="product_review" />
+    <NavigationProperty Name="product_review1" Relationship="Self.FK_product_review_user1" FromRole="user" ToRole="product_review" />
+    <NavigationProperty Name="staff" Relationship="Self.FK_staff_user" FromRole="user" ToRole="staff" />
+    <NavigationProperty Name="user_role" Relationship="Self.FK_user_role_user" FromRole="user" ToRole="user_role" />
+  </EntityType>
+  <EntityType Name="user_role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="role_id" Type="Byte" />
+    <NavigationProperty Name="role" Relationship="Self.FK_user_role_role" FromRole="user_role" ToRole="role" />
+    <NavigationProperty Name="user" Relationship="Self.FK_user_role_user" FromRole="user_role" ToRole="user" />
+  </EntityType>
+  <Association Name="FK_picture_about_us">
+    <End Role="about_us" Type="Self.about_us" Multiplicity="0..1" />
+    <End Role="picture" Type="Self.picture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="about_us">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="picture">
+        <PropertyRef Name="about_us_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_features_base">
+    <End Role="base" Type="Self.base" Multiplicity="0..1" />
+    <End Role="product_features" Type="Self.product_features" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="base">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_features">
+        <PropertyRef Name="base_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_card_user_card">
+    <End Role="card" Type="Self.card" Multiplicity="0..1" />
+    <End Role="card_user" Type="Self.card_user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="card">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="card_user">
+        <PropertyRef Name="card_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_card">
+    <End Role="card" Type="Self.card" Multiplicity="0..1" />
+    <End Role="order" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="card">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="card_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_card_user_user">
+    <End Role="user" Type="Self.user" Multiplicity="0..1" />
+    <End Role="card_user" Type="Self.card_user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="card_user">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_size_category1">
+    <End Role="category" Type="Self.category" Multiplicity="0..1" />
+    <End Role="size" Type="Self.size" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="size">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sub_category_category">
+    <End Role="category" Type="Self.category" Multiplicity="0..1" />
+    <End Role="sub_category" Type="Self.sub_category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sub_category">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_collection">
+    <End Role="collection" Type="Self.collection" Multiplicity="0..1" />
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="collection">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="collection_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_color_prod_pivot_color">
+    <End Role="color" Type="Self.color" Multiplicity="0..1" />
+    <End Role="color_prod_pivot" Type="Self.color_prod_pivot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="color">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="color_prod_pivot">
+        <PropertyRef Name="color_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_color_prod_pivot_product">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="color_prod_pivot" Type="Self.color_prod_pivot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="color_prod_pivot">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_discount_product">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="discount" Type="Self.discount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="discount">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_features_fit">
+    <End Role="fit" Type="Self.fit" Multiplicity="0..1" />
+    <End Role="product_features" Type="Self.product_features" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fit">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_features">
+        <PropertyRef Name="upper_fit_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_features_fit1">
+    <End Role="fit" Type="Self.fit" Multiplicity="0..1" />
+    <End Role="product_features" Type="Self.product_features" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fit">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_features">
+        <PropertyRef Name="bottom_fit_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_features_material">
+    <End Role="material" Type="Self.material" Multiplicity="0..1" />
+    <End Role="product_features" Type="Self.product_features" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="material">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_features">
+        <PropertyRef Name="material_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_message_user">
+    <End Role="user" Type="Self.user" Multiplicity="0..1" />
+    <End Role="message" Type="Self.message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="message">
+        <PropertyRef Name="from_user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_message_user1">
+    <End Role="user" Type="Self.user" Multiplicity="0..1" />
+    <End Role="message" Type="Self.message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="message">
+        <PropertyRef Name="to_user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_features_neckline">
+    <End Role="neckline" Type="Self.neckline" Multiplicity="0..1" />
+    <End Role="product_features" Type="Self.product_features" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="neckline">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_features">
+        <PropertyRef Name="neckline_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_order_info">
+    <End Role="order_info" Type="Self.order_info" Multiplicity="0..1" />
+    <End Role="order" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order_info">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="order_info_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_product">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="order" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="prod_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_user">
+    <End Role="user" Type="Self.user" Multiplicity="0..1" />
+    <End Role="order" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_features_pattern">
+    <End Role="pattern" Type="Self.pattern" Multiplicity="0..1" />
+    <End Role="product_features" Type="Self.product_features" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pattern">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_features">
+        <PropertyRef Name="pattern_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_picture_product">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="picture" Type="Self.picture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="picture">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_picture_services">
+    <End Role="services" Type="Self.services" Multiplicity="0..1" />
+    <End Role="picture" Type="Self.picture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="services">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="picture">
+        <PropertyRef Name="services_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_picture_staff">
+    <End Role="staff" Type="Self.staff" Multiplicity="0..1" />
+    <End Role="picture" Type="Self.picture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="staff">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="picture">
+        <PropertyRef Name="staff_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_features_pocket">
+    <End Role="pocket" Type="Self.pocket" Multiplicity="0..1" />
+    <End Role="product_features" Type="Self.product_features" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pocket">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_features">
+        <PropertyRef Name="pocket_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_poll_choices_poll">
+    <End Role="poll" Type="Self.poll" Multiplicity="0..1" />
+    <End Role="poll_choices" Type="Self.poll_choices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="poll">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="poll_choices">
+        <PropertyRef Name="poll_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_info_product">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="product_info" Type="Self.product_info" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_info">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_product_features">
+    <End Role="product_features" Type="Self.product_features" Multiplicity="0..1" />
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product_features">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="product_features_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_review_product">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="product_review" Type="Self.product_review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_review">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_sex_category">
+    <End Role="sex_category" Type="Self.sex_category" Multiplicity="0..1" />
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sex_category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="sex_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_sub_category">
+    <End Role="sub_category" Type="Self.sub_category" Multiplicity="0..1" />
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sub_category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="sub_category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_user">
+    <End Role="user" Type="Self.user" Multiplicity="0..1" />
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="adder_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_rating_product">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="rating" Type="Self.rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="rating">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_size_prod_pivot_product">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="size_prod_pivot" Type="Self.size_prod_pivot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="size_prod_pivot">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_features_sleeve">
+    <End Role="sleeve" Type="Self.sleeve" Multiplicity="0..1" />
+    <End Role="product_features" Type="Self.product_features" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sleeve">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_features">
+        <PropertyRef Name="sleeve_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_review_user">
+    <End Role="user" Type="Self.user" Multiplicity="0..1" />
+    <End Role="product_review" Type="Self.product_review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_review">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_review_user1">
+    <End Role="user" Type="Self.user" Multiplicity="0..1" />
+    <End Role="product_review" Type="Self.product_review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_review">
+        <PropertyRef Name="reply_user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_role_role">
+    <End Role="role" Type="Self.role" Multiplicity="0..1" />
+    <End Role="user_role" Type="Self.user_role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_role">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_category_sex_category">
+    <End Role="sex_category" Type="Self.sex_category" Multiplicity="0..1" />
+    <End Role="sub_category" Type="Self.sub_category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sex_category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sub_category">
+        <PropertyRef Name="sex_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_size_prod_pivot_size1">
+    <End Role="size" Type="Self.size" Multiplicity="0..1" />
+    <End Role="size_prod_pivot" Type="Self.size_prod_pivot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="size">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="size_prod_pivot">
+        <PropertyRef Name="size_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_staff_staff_role">
+    <End Role="staff_role" Type="Self.staff_role" Multiplicity="0..1" />
+    <End Role="staff" Type="Self.staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="staff_role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="staff">
+        <PropertyRef Name="staff_role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_staff_user">
+    <End Role="user" Type="Self.user" Multiplicity="0..1" />
+    <End Role="staff" Type="Self.staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="staff">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_role_user">
+    <End Role="user" Type="Self.user" Multiplicity="0..1" />
+    <End Role="user_role" Type="Self.user_role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_role">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="elite_shoppingEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="about_us" EntityType="Self.about_us" />
+    <EntitySet Name="base" EntityType="Self.base" />
+    <EntitySet Name="card" EntityType="Self.card" />
+    <EntitySet Name="card_user" EntityType="Self.card_user" />
+    <EntitySet Name="category" EntityType="Self.category" />
+    <EntitySet Name="collection" EntityType="Self.collection" />
+    <EntitySet Name="color" EntityType="Self.color" />
+    <EntitySet Name="color_prod_pivot" EntityType="Self.color_prod_pivot" />
+    <EntitySet Name="contact_messages" EntityType="Self.contact_messages" />
+    <EntitySet Name="discount" EntityType="Self.discount" />
+    <EntitySet Name="fit" EntityType="Self.fit" />
+    <EntitySet Name="info" EntityType="Self.info" />
+    <EntitySet Name="material" EntityType="Self.material" />
+    <EntitySet Name="message" EntityType="Self.message" />
+    <EntitySet Name="neckline" EntityType="Self.neckline" />
+    <EntitySet Name="news_user" EntityType="Self.news_user" />
+    <EntitySet Name="order" EntityType="Self.order" />
+    <EntitySet Name="order_info" EntityType="Self.order_info" />
+    <EntitySet Name="pattern" EntityType="Self.pattern" />
+    <EntitySet Name="picture" EntityType="Self.picture" />
+    <EntitySet Name="pocket" EntityType="Self.pocket" />
+    <EntitySet Name="poll" EntityType="Self.poll" />
+    <EntitySet Name="poll_choices" EntityType="Self.poll_choices" />
+    <EntitySet Name="product" EntityType="Self.product" />
+    <EntitySet Name="product_features" EntityType="Self.product_features" />
+    <EntitySet Name="product_info" EntityType="Self.product_info" />
+    <EntitySet Name="product_review" EntityType="Self.product_review" />
+    <EntitySet Name="rating" EntityType="Self.rating" />
+    <EntitySet Name="role" EntityType="Self.role" />
+    <EntitySet Name="sex_category" EntityType="Self.sex_category" />
+    <EntitySet Name="services" EntityType="Self.services" />
+    <EntitySet Name="size" EntityType="Self.size" />
+    <EntitySet Name="size_prod_pivot" EntityType="Self.size_prod_pivot" />
+    <EntitySet Name="sleeve" EntityType="Self.sleeve" />
+    <EntitySet Name="staff" EntityType="Self.staff" />
+    <EntitySet Name="staff_role" EntityType="Self.staff_role" />
+    <EntitySet Name="sub_category" EntityType="Self.sub_category" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="user" EntityType="Self.user" />
+    <EntitySet Name="user_role" EntityType="Self.user_role" />
+    <AssociationSet Name="FK_picture_about_us" Association="Self.FK_picture_about_us">
+      <End Role="about_us" EntitySet="about_us" />
+      <End Role="picture" EntitySet="picture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_features_base" Association="Self.FK_product_features_base">
+      <End Role="base" EntitySet="base" />
+      <End Role="product_features" EntitySet="product_features" />
+    </AssociationSet>
+    <AssociationSet Name="FK_card_user_card" Association="Self.FK_card_user_card">
+      <End Role="card" EntitySet="card" />
+      <End Role="card_user" EntitySet="card_user" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_card" Association="Self.FK_order_card">
+      <End Role="card" EntitySet="card" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_card_user_user" Association="Self.FK_card_user_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="card_user" EntitySet="card_user" />
+    </AssociationSet>
+    <AssociationSet Name="FK_size_category1" Association="Self.FK_size_category1">
+      <End Role="category" EntitySet="category" />
+      <End Role="size" EntitySet="size" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sub_category_category" Association="Self.FK_sub_category_category">
+      <End Role="category" EntitySet="category" />
+      <End Role="sub_category" EntitySet="sub_category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_collection" Association="Self.FK_product_collection">
+      <End Role="collection" EntitySet="collection" />
+      <End Role="product" EntitySet="product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_color_prod_pivot_color" Association="Self.FK_color_prod_pivot_color">
+      <End Role="color" EntitySet="color" />
+      <End Role="color_prod_pivot" EntitySet="color_prod_pivot" />
+    </AssociationSet>
+    <AssociationSet Name="FK_color_prod_pivot_product" Association="Self.FK_color_prod_pivot_product">
+      <End Role="product" EntitySet="product" />
+      <End Role="color_prod_pivot" EntitySet="color_prod_pivot" />
+    </AssociationSet>
+    <AssociationSet Name="FK_discount_product" Association="Self.FK_discount_product">
+      <End Role="product" EntitySet="product" />
+      <End Role="discount" EntitySet="discount" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_features_fit" Association="Self.FK_product_features_fit">
+      <End Role="fit" EntitySet="fit" />
+      <End Role="product_features" EntitySet="product_features" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_features_fit1" Association="Self.FK_product_features_fit1">
+      <End Role="fit" EntitySet="fit" />
+      <End Role="product_features" EntitySet="product_features" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_features_material" Association="Self.FK_product_features_material">
+      <End Role="material" EntitySet="material" />
+      <End Role="product_features" EntitySet="product_features" />
+    </AssociationSet>
+    <AssociationSet Name="FK_message_user" Association="Self.FK_message_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="message" EntitySet="message" />
+    </AssociationSet>
+    <AssociationSet Name="FK_message_user1" Association="Self.FK_message_user1">
+      <End Role="user" EntitySet="user" />
+      <End Role="message" EntitySet="message" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_features_neckline" Association="Self.FK_product_features_neckline">
+      <End Role="neckline" EntitySet="neckline" />
+      <End Role="product_features" EntitySet="product_features" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_order_info" Association="Self.FK_order_order_info">
+      <End Role="order_info" EntitySet="order_info" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_product" Association="Self.FK_order_product">
+      <End Role="product" EntitySet="product" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_user" Association="Self.FK_order_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_features_pattern" Association="Self.FK_product_features_pattern">
+      <End Role="pattern" EntitySet="pattern" />
+      <End Role="product_features" EntitySet="product_features" />
+    </AssociationSet>
+    <AssociationSet Name="FK_picture_product" Association="Self.FK_picture_product">
+      <End Role="product" EntitySet="product" />
+      <End Role="picture" EntitySet="picture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_picture_services" Association="Self.FK_picture_services">
+      <End Role="services" EntitySet="services" />
+      <End Role="picture" EntitySet="picture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_picture_staff" Association="Self.FK_picture_staff">
+      <End Role="staff" EntitySet="staff" />
+      <End Role="picture" EntitySet="picture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_features_pocket" Association="Self.FK_product_features_pocket">
+      <End Role="pocket" EntitySet="pocket" />
+      <End Role="product_features" EntitySet="product_features" />
+    </AssociationSet>
+    <AssociationSet Name="FK_poll_choices_poll" Association="Self.FK_poll_choices_poll">
+      <End Role="poll" EntitySet="poll" />
+      <End Role="poll_choices" EntitySet="poll_choices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_info_product" Association="Self.FK_product_info_product">
+      <End Role="product" EntitySet="product" />
+      <End Role="product_info" EntitySet="product_info" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_product_features" Association="Self.FK_product_product_features">
+      <End Role="product_features" EntitySet="product_features" />
+      <End Role="product" EntitySet="product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_review_product" Association="Self.FK_product_review_product">
+      <End Role="product" EntitySet="product" />
+      <End Role="product_review" EntitySet="product_review" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_sex_category" Association="Self.FK_product_sex_category">
+      <End Role="sex_category" EntitySet="sex_category" />
+      <End Role="product" EntitySet="product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_sub_category" Association="Self.FK_product_sub_category">
+      <End Role="sub_category" EntitySet="sub_category" />
+      <End Role="product" EntitySet="product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_user" Association="Self.FK_product_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="product" EntitySet="product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_rating_product" Association="Self.FK_rating_product">
+      <End Role="product" EntitySet="product" />
+      <End Role="rating" EntitySet="rating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_size_prod_pivot_product" Association="Self.FK_size_prod_pivot_product">
+      <End Role="product" EntitySet="product" />
+      <End Role="size_prod_pivot" EntitySet="size_prod_pivot" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_features_sleeve" Association="Self.FK_product_features_sleeve">
+      <End Role="sleeve" EntitySet="sleeve" />
+      <End Role="product_features" EntitySet="product_features" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_review_user" Association="Self.FK_product_review_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="product_review" EntitySet="product_review" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_review_user1" Association="Self.FK_product_review_user1">
+      <End Role="user" EntitySet="user" />
+      <End Role="product_review" EntitySet="product_review" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_role_role" Association="Self.FK_user_role_role">
+      <End Role="role" EntitySet="role" />
+      <End Role="user_role" EntitySet="user_role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_category_sex_category" Association="Self.FK_category_sex_category">
+      <End Role="sex_category" EntitySet="sex_category" />
+      <End Role="sub_category" EntitySet="sub_category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_size_prod_pivot_size1" Association="Self.FK_size_prod_pivot_size1">
+      <End Role="size" EntitySet="size" />
+      <End Role="size_prod_pivot" EntitySet="size_prod_pivot" />
+    </AssociationSet>
+    <AssociationSet Name="FK_staff_staff_role" Association="Self.FK_staff_staff_role">
+      <End Role="staff_role" EntitySet="staff_role" />
+      <End Role="staff" EntitySet="staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_staff_user" Association="Self.FK_staff_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="staff" EntitySet="staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_role_user" Association="Self.FK_user_role_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="user_role" EntitySet="user_role" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(elite_shoppingModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(elite_shoppingModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2bd4ad6d21ca4792b4183369a0cbef9d" Name="Diagram1">
+        <EntityTypeShape EntityType="elite_shoppingModel.about_us" Width="1.5" PointX="9" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.base" Width="1.5" PointX="1.5" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.card" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.card_user" Width="1.5" PointX="3" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.category" Width="1.5" PointX="1.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.collection" Width="1.5" PointX="3.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.color" Width="1.5" PointX="6" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.color_prod_pivot" Width="1.5" PointX="8.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.contact_messages" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.discount" Width="1.5" PointX="8.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.fit" Width="1.5" PointX="1.5" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.info" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.material" Width="1.5" PointX="1.5" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.message" Width="1.5" PointX="3" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.neckline" Width="1.5" PointX="1.5" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.news_user" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.order" Width="1.5" PointX="6" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.order_info" Width="1.5" PointX="3.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.pattern" Width="1.5" PointX="1.5" PointY="36" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.picture" Width="1.5" PointX="11.25" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.pocket" Width="1.5" PointX="1.5" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.poll" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.poll_choices" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.product" Width="1.5" PointX="6" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.product_features" Width="1.5" PointX="3.75" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.product_info" Width="1.5" PointX="8.25" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.product_review" Width="1.5" PointX="8.25" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.rating" Width="1.5" PointX="8.25" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.role" Width="1.5" PointX="0.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.sex_category" Width="1.5" PointX="3.75" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.services" Width="1.5" PointX="9" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.size" Width="1.5" PointX="9" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.size_prod_pivot" Width="1.5" PointX="11.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.sleeve" Width="1.5" PointX="1.5" PointY="40.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.staff" Width="1.5" PointX="6" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.staff_role" Width="1.5" PointX="3.75" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.sub_category" Width="1.5" PointX="3.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.user" Width="1.5" PointX="0.75" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="elite_shoppingModel.user_role" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <AssociationConnector Association="elite_shoppingModel.FK_picture_about_us" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_product_features_base" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_card_user_card" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_order_card" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_card_user_user" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_size_category1" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_sub_category_category" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_product_collection" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_color_prod_pivot_color" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_color_prod_pivot_product" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_discount_product" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_product_features_fit" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_product_features_fit1" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_product_features_material" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_message_user" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_message_user1" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_product_features_neckline" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_order_order_info" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_order_product" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_order_user" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_product_features_pattern" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_picture_product" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_picture_services" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_picture_staff" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_product_features_pocket" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_poll_choices_poll" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_product_info_product" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_product_product_features" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_product_review_product" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_product_sex_category" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_product_sub_category" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_product_user" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_rating_product" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_size_prod_pivot_product" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_product_features_sleeve" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_product_review_user" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_product_review_user1" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_user_role_role" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_category_sex_category" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_size_prod_pivot_size1" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_staff_staff_role" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_staff_user" ManuallyRouted="false" />
+        <AssociationConnector Association="elite_shoppingModel.FK_user_role_user" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

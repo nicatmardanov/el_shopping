@@ -1,0 +1,293 @@
+﻿
+@{
+    ViewBag.Title = "AddProduct";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+@using elite_shopping.Models;
+
+@helper Prod_Info()
+{
+    <div id="prod_info">
+        <input type="text" placeholder="Name" name="name" required /> <br /> <br />
+        <input type="text" placeholder="Price" name="price" required /> <br /> <br />
+
+        <label>Collection: </label>
+        <select name="collection_id">
+            <option value="0">Choose a collection</option>
+            @foreach (collection col in ViewBag.Collection)
+            {
+                <option value="@col.id">@col.name @col.coll_year</option>
+            }
+        </select> <br /> <br />
+
+
+        <label>Sex Category: </label> <br />
+
+        <div style="float: left;"><label>Male: </label> <input class="sex_radio" type="radio" name="sMale" value="male" /></div>
+        <div style="margin-left: 20px; float: left;"><label>Female: </label> <input class="sex_radio" type="radio" name="sFemale" value="female" /></div>
+        <br /> <hr />
+
+    </div>
+
+
+    @*<label>Category: </label>
+        <select name="sub_category_id" class="category_select" onchange="categoryFunction()">
+            foreach (sub_category cat in ViewBag.SubCategory)
+            {
+                <option value="@cat.id">@cat.sub_category_name</option>
+            }
+        </select> <br /> <br />*@
+
+}
+
+@helper Shoes()
+{
+    <div id="shoes_features">
+        <label>Base: </label>
+        <select name="base_id">
+            <option value="0">Choose a base type</option>
+            @foreach (pocket pc in ViewBag.Pocket)
+            {
+                <option value="@pc.id">@pc.name</option>
+            }
+        </select> <br /> <br />
+
+
+    </div>
+
+}
+
+@helper Wear()
+{
+    <div id="wear_features">
+        <label>Material: </label>
+        <select name="material_id">
+            <option value="0">Choose a material type</option>
+            @foreach (material mt in ViewBag.Material)
+            {
+                <option value="@mt.id">@mt.name</option>
+            }
+        </select> <br /> <br />
+
+        <label>Neckline: </label>
+        <select name="neckline_id">
+            <option value="0">Choose a neckline type</option>
+            @foreach (neckline nc in ViewBag.Neckline)
+            {
+                <option value="@nc.id">@nc.name</option>
+            }
+        </select> <br /> <br />
+
+        <label>Pattern: </label>
+        <select name="pattern_id">
+            <option value="0">Choose a pattern type</option>
+            @foreach (pattern pt in ViewBag.Pattern)
+            {
+                <option value="@pt.id">@pt.name</option>
+            }
+        </select> <br /> <br />
+
+        <label>Sleeve: </label> <br />
+
+        <div style="float: left;"><label>Long: </label> <input type="radio" name="sleeveLong" value="long" /></div>
+        <div style="margin-left: 20px; float: left;"><label>Short: </label> <input type="radio" name="sleeveShort" value="short" /></div>
+        <br /> <hr />
+
+        <label>Upper Fit: </label>
+        <select name="upper_fit_id">
+            <option value="0">Choose a upperfit type</option>
+            @foreach (fit ft in ViewBag.Fit)
+            {
+                <option value="@ft.id">@ft.name</option>
+            }
+        </select> <br /> <br />
+
+        <label>Bottom Fit: </label>
+        <select name="bottom_fit_id">
+            <option value="0">Choose a bottom type</option>
+            @foreach (fit ft in ViewBag.Fit)
+            {
+                <option value="@ft.id">@ft.name</option>
+            }
+        </select> <br /> <br />
+
+        <label>Pocket: </label>
+        <select name="pocket_id">
+            <option value="0">Choose a pocket type</option>
+            @foreach (pocket pc in ViewBag.Pocket)
+            {
+                <option value="@pc.id">@pc.name</option>
+            }
+        </select> <br /> <br />
+    </div>
+}
+
+@helper Color()
+{
+    <div id="color_part">
+        <hr /><label>Choose colors:</label> <br />
+        @foreach (color cl in ViewBag.Color)
+        {
+            <label>@cl.name</label>
+            <input type="checkbox" name="color" value="@cl.id" />
+            <br />
+        }
+
+    </div>
+}
+
+@helper Prod_Info_Text()
+{
+    <textarea name="text" placeholder="Information about product"></textarea> <br /> <br />
+}
+
+@helper User_Data()
+{
+    var us = elite_shopping.Classes.connection.el_entities.user.FirstOrDefault(x => x.name == User.Identity.Name);
+    <input type="text" value="@us.id" name="adder_user" hidden />
+}
+
+<form method="post" action="/Admin/AddProduct" enctype="multipart/form-data" class="add_product">
+
+    @Prod_Info()
+
+    @User_Data()
+
+    <div id="wear_part">
+        @Wear()
+    </div>
+
+    <div id="shoes_part">
+        @Shoes()
+    </div>
+
+    <div id="color_section">
+        @Color()
+    </div>
+
+
+    @Prod_Info_Text()
+
+
+    <input type="file" name="img" multiple /> <br /> <hr />
+
+    <input type="submit" value="SEND" />
+
+
+</form>
+
+@section script{
+    <script>
+        $(document).ready(function () {
+            var wear = $('#wear_features');
+            $('#wear_features').remove();
+            var shoes = $('#shoes_features');
+            $('#shoes_features').remove();
+            var colors = $('#color_part');
+            colors.remove();
+
+            var checked_item = "";
+            var sex_id = 0;
+
+
+            $('.sex_radio').change(function () {
+                $('.sex_radio').prop('checked', false);
+                $(this).prop('checked', true);
+                checked_item = $(this).attr('value');
+
+                if (checked_item == 'male') {
+                    sex_id = 1;
+                }
+                else {
+                    sex_id = 2;
+                }
+
+                $.ajax({
+                    type: 'get',
+                    url: '/AdmParts/category_ajax/' + sex_id,
+                    dataType: 'Json',
+                    success: function (result) {
+                        //console.log(result.data[0].id);
+                        $('.category_label').remove();
+                        $('.category_select').remove();
+                        $('.category_options').remove();
+
+                        var category_label = $('<label class="category_label">Category: </label>');
+                        $('#prod_info').append(category_label);
+
+                        var select_tag = $(' <select name="sub_category_id" class="category_select"></select> ')
+
+                        $('#prod_info').append(select_tag);
+                        var option_tag = $('<option value="0" class="category_options">Choose a category</option>');
+                        select_tag.append(option_tag);
+
+                        for (var i = 0; i < result.data.length; i++) {
+                            option_tag = $('<option value=' + result.data[i].id + ' class="category_options">' + result.data[i].sub_category_name + '</option>');
+                            select_tag.append(option_tag);
+                        }
+
+                    }
+                })
+
+
+            });
+
+            function size_ajax(id) {
+                $('#size_part').remove();
+                $.ajax({
+                    type: 'get',
+                    url: '/AdmParts/size_ajax/' + id,
+                    dataType: 'json',
+                    success: function (result) {
+                        var size_tag = $('<div id="size_part"></div>');
+                        if (id == 1)
+                            $('#wear_features').append(size_tag);
+                        else
+                            $('#shoes_features').append(size_tag);
+
+                        size_tag.append($('<hr /><label>Choose sizes:</label> <br />'))
+                        for (var i = 0; i < result.data.length; i++) {
+                            var label = $('<label>' + result.data[i].size_name + '</label>')
+                            var check_box = $('<input type="checkbox" name="size" value=' + result.data[i].id + ' /><br />');
+                            size_tag.append(label);
+                            size_tag.append(check_box);
+                        }
+                    }
+                })
+            }
+
+            $(document).on("change", ".category_select", function (event) {
+                if (sex_id == 1) {
+                    if ($(this).val() == 2) {
+                        wear.remove();
+                        $('#shoes_part').append(shoes);
+                        size_ajax(2);
+                    }
+                    else {
+                        shoes.remove();
+                        $('#wear_part').append(wear);
+                        size_ajax(1);
+                    }
+                }
+
+                else {
+                    if ($(this).val() == 6) {
+                        wear.remove();
+                        $('#shoes_part').append(shoes);
+                        size_ajax(2);
+                    }
+                    else {
+                        shoes.remove();
+                        $('#wear_part').append(wear);
+                        size_ajax(1);
+                    }
+                }
+
+                $('#color_section').append(colors);
+
+            });
+        })
+
+    </script>
+}

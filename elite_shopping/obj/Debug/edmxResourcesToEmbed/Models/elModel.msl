@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="elite_shoppingModelStoreContainer" CdmEntityContainer="elite_shoppingEntities">
+    <EntitySetMapping Name="about_us">
+      <EntityTypeMapping TypeName="elite_shoppingModel.about_us">
+        <MappingFragment StoreEntitySet="about_us">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="small_text" ColumnName="small_text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="base">
+      <EntityTypeMapping TypeName="elite_shoppingModel.base">
+        <MappingFragment StoreEntitySet="base">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="card">
+      <EntityTypeMapping TypeName="elite_shoppingModel.card">
+        <MappingFragment StoreEntitySet="card">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="card_num" ColumnName="card_num" />
+          <ScalarProperty Name="expiry_date" ColumnName="expiry_date" />
+          <ScalarProperty Name="security_code" ColumnName="security_code" />
+          <ScalarProperty Name="cardholder_name" ColumnName="cardholder_name" />
+          <ScalarProperty Name="cardholder_surname" ColumnName="cardholder_surname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="card_user">
+      <EntityTypeMapping TypeName="elite_shoppingModel.card_user">
+        <MappingFragment StoreEntitySet="card_user">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="card_id" ColumnName="card_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="category">
+      <EntityTypeMapping TypeName="elite_shoppingModel.category">
+        <MappingFragment StoreEntitySet="category">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="collection">
+      <EntityTypeMapping TypeName="elite_shoppingModel.collection">
+        <MappingFragment StoreEntitySet="collection">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="coll_year" ColumnName="coll_year" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="color">
+      <EntityTypeMapping TypeName="elite_shoppingModel.color">
+        <MappingFragment StoreEntitySet="color">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="color_prod_pivot">
+      <EntityTypeMapping TypeName="elite_shoppingModel.color_prod_pivot">
+        <MappingFragment StoreEntitySet="color_prod_pivot">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="contact_messages">
+      <EntityTypeMapping TypeName="elite_shoppingModel.contact_messages">
+        <MappingFragment StoreEntitySet="contact_messages">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="message" ColumnName="message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="discount">
+      <EntityTypeMapping TypeName="elite_shoppingModel.discount">
+        <MappingFragment StoreEntitySet="discount">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="disc_percent" ColumnName="disc_percent" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="upto" ColumnName="upto" />
+          <ScalarProperty Name="till_date" ColumnName="till_date" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="fit">
+      <EntityTypeMapping TypeName="elite_shoppingModel.fit">
+        <MappingFragment StoreEntitySet="fit">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="info">
+      <EntityTypeMapping TypeName="elite_shoppingModel.info">
+        <MappingFragment StoreEntitySet="info">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="location" ColumnName="location" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="material">
+      <EntityTypeMapping TypeName="elite_shoppingModel.material">
+        <MappingFragment StoreEntitySet="material">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="message">
+      <EntityTypeMapping TypeName="elite_shoppingModel.message">
+        <MappingFragment StoreEntitySet="message">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="from_user_id" ColumnName="from_user_id" />
+          <ScalarProperty Name="to_user_id" ColumnName="to_user_id" />
+          <ScalarProperty Name="see" ColumnName="see" />
+          <ScalarProperty Name="text" ColumnName="text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="neckline">
+      <EntityTypeMapping TypeName="elite_shoppingModel.neckline">
+        <MappingFragment StoreEntitySet="neckline">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="news_user">
+      <EntityTypeMapping TypeName="elite_shoppingModel.news_user">
+        <MappingFragment StoreEntitySet="news_user">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order">
+      <EntityTypeMapping TypeName="elite_shoppingModel.order">
+        <MappingFragment StoreEntitySet="order">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="prod_id" ColumnName="prod_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="order_info_id" ColumnName="order_info_id" />
+          <ScalarProperty Name="card_id" ColumnName="card_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_info">
+      <EntityTypeMapping TypeName="elite_shoppingModel.order_info">
+        <MappingFragment StoreEntitySet="order_info">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="contact_name" ColumnName="contact_name" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pattern">
+      <EntityTypeMapping TypeName="elite_shoppingModel.pattern">
+        <MappingFragment StoreEntitySet="pattern">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="picture">
+      <EntityTypeMapping TypeName="elite_shoppingModel.picture">
+        <MappingFragment StoreEntitySet="picture">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="small" ColumnName="small" />
+          <ScalarProperty Name="medium" ColumnName="medium" />
+          <ScalarProperty Name="big" ColumnName="big" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="services_id" ColumnName="services_id" />
+          <ScalarProperty Name="about_us_id" ColumnName="about_us_id" />
+          <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pocket">
+      <EntityTypeMapping TypeName="elite_shoppingModel.pocket">
+        <MappingFragment StoreEntitySet="pocket">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="poll">
+      <EntityTypeMapping TypeName="elite_shoppingModel.poll">
+        <MappingFragment StoreEntitySet="poll">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="poll_choices">
+      <EntityTypeMapping TypeName="elite_shoppingModel.poll_choices">
+        <MappingFragment StoreEntitySet="poll_choices">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="choice_name" ColumnName="choice_name" />
+          <ScalarProperty Name="poll_id" ColumnName="poll_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product">
+      <EntityTypeMapping TypeName="elite_shoppingModel.product">
+        <MappingFragment StoreEntitySet="product">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="add_date" ColumnName="add_date" />
+          <ScalarProperty Name="collection_id" ColumnName="collection_id" />
+          <ScalarProperty Name="product_features_id" ColumnName="product_features_id" />
+          <ScalarProperty Name="sex_id" ColumnName="sex_id" />
+          <ScalarProperty Name="approved" ColumnName="approved" />
+          <ScalarProperty Name="sub_category_id" ColumnName="sub_category_id" />
+          <ScalarProperty Name="adder_user" ColumnName="adder_user" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_features">
+      <EntityTypeMapping TypeName="elite_shoppingModel.product_features">
+        <MappingFragment StoreEntitySet="product_features">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="material_id" ColumnName="material_id" />
+          <ScalarProperty Name="neckline_id" ColumnName="neckline_id" />
+          <ScalarProperty Name="pattern_id" ColumnName="pattern_id" />
+          <ScalarProperty Name="sleeve_id" ColumnName="sleeve_id" />
+          <ScalarProperty Name="upper_fit_id" ColumnName="upper_fit_id" />
+          <ScalarProperty Name="bottom_fit_id" ColumnName="bottom_fit_id" />
+          <ScalarProperty Name="pocket_id" ColumnName="pocket_id" />
+          <ScalarProperty Name="base_id" ColumnName="base_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_info">
+      <EntityTypeMapping TypeName="elite_shoppingModel.product_info">
+        <MappingFragment StoreEntitySet="product_info">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="text" ColumnName="text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_review">
+      <EntityTypeMapping TypeName="elite_shoppingModel.product_review">
+        <MappingFragment StoreEntitySet="product_review">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="reply_user_id" ColumnName="reply_user_id" />
+          <ScalarProperty Name="text" ColumnName="text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rating">
+      <EntityTypeMapping TypeName="elite_shoppingModel.rating">
+        <MappingFragment StoreEntitySet="rating">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="rating1" ColumnName="rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="role">
+      <EntityTypeMapping TypeName="elite_shoppingModel.role">
+        <MappingFragment StoreEntitySet="role">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sex_category">
+      <EntityTypeMapping TypeName="elite_shoppingModel.sex_category">
+        <MappingFragment StoreEntitySet="sex_category">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="sex_name" ColumnName="sex_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="services">
+      <EntityTypeMapping TypeName="elite_shoppingModel.services">
+        <MappingFragment StoreEntitySet="services">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="text" ColumnName="text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="size">
+      <EntityTypeMapping TypeName="elite_shoppingModel.size">
+        <MappingFragment StoreEntitySet="size">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="size_name" ColumnName="size_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="size_prod_pivot">
+      <EntityTypeMapping TypeName="elite_shoppingModel.size_prod_pivot">
+        <MappingFragment StoreEntitySet="size_prod_pivot">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="size_id" ColumnName="size_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sleeve">
+      <EntityTypeMapping TypeName="elite_shoppingModel.sleeve">
+        <MappingFragment StoreEntitySet="sleeve">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="long_sleeve" ColumnName="long_sleeve" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="staff">
+      <EntityTypeMapping TypeName="elite_shoppingModel.staff">
+        <MappingFragment StoreEntitySet="staff">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="staff_role_id" ColumnName="staff_role_id" />
+          <ScalarProperty Name="facebook_adress" ColumnName="facebook_adress" />
+          <ScalarProperty Name="twitter_adress" ColumnName="twitter_adress" />
+          <ScalarProperty Name="instagram_adress" ColumnName="instagram_adress" />
+          <ScalarProperty Name="linkedin_adress" ColumnName="linkedin_adress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="staff_role">
+      <EntityTypeMapping TypeName="elite_shoppingModel.staff_role">
+        <MappingFragment StoreEntitySet="staff_role">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sub_category">
+      <EntityTypeMapping TypeName="elite_shoppingModel.sub_category">
+        <MappingFragment StoreEntitySet="sub_category">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="sex_id" ColumnName="sex_id" />
+          <ScalarProperty Name="sub_category_name" ColumnName="sub_category_name" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="elite_shoppingModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user">
+      <EntityTypeMapping TypeName="elite_shoppingModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_role">
+      <EntityTypeMapping TypeName="elite_shoppingModel.user_role">
+        <MappingFragment StoreEntitySet="user_role">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="elite_shoppingModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="elite_shoppingModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="elite_shoppingModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="elite_shoppingModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="elite_shoppingModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="elite_shoppingModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="elite_shoppingModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="elite_shoppingModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="elite_shoppingModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

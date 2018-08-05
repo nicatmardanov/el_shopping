@@ -1,0 +1,147 @@
+﻿@using elite_shopping.Models
+
+
+@functions{
+    public string Capitalize(string s)
+    {
+        return s[0].ToString().ToUpper() + s.Substring(1, s.Length - 1);
+    }
+}
+
+<div id="sidebar" class="span3">
+    <div class="well well-small">
+        <ul class="nav nav-list">
+            <li><span style="font-size: 16px; font-weight:500;">Product type:</span></li>
+            @foreach (sub_category sc in ViewBag.SubCategory)
+            {
+                <li><a href="javascript:void(0)" class="search_item_category" data-val="@sc.id"><span class="icon-chevron-right"></span>@Capitalize(sc.sub_category_name)</a></li>
+            }
+        </ul>
+    </div>
+
+    <div class="well well-small">
+        <ul class="nav nav-list">
+            <li><span style="font-size: 16px; font-weight:500;">Fit:</span></li>
+            @foreach (fit ft in ViewBag.Fit)
+            {
+                <li><a href="javascript:void(0)" class="search_item_fit" data-val="@ft.id"><span class="icon-chevron-right"></span>@Capitalize(ft.name)</a></li>
+            }
+        </ul>
+    </div>
+
+    <div class="well well-small">
+        <ul class="nav nav-list">
+            <li><span style="font-size: 16px; font-weight:500;">Color:</span></li>
+            @foreach (color cl in ViewBag.Color)
+            {
+                <li><a href="javascript:void(0)" class="search_item_color" data-val="@cl.id"><span class="icon-chevron-right"></span>@Capitalize(cl.name)</a></li>
+            }
+        </ul>
+    </div>
+
+    <div class="well well-small">
+        <ul class="nav nav-list">
+            <li><span style="font-size: 16px; font-weight:500;">Size:</span></li>
+            @foreach (size sz in ViewBag.Size)
+            {
+                <li><a href="javascript:void(0)" class="search_item_size" data-val="@sz.id"><span class="icon-chevron-right"></span>@Capitalize(sz.size_name)</a></li>
+            }
+        </ul>
+    </div>
+
+    <div class="well well-small">
+        <ul class="nav nav-list">
+            <li><span style="font-size: 16px; font-weight:500;">Material:</span></li>
+            @foreach (material mt in ViewBag.Material)
+            {
+                <li><a href="javascript:void(0)" class="search_item_material" data-val="@mt.id"><span class="icon-chevron-right"></span>@Capitalize(mt.name)</a></li>
+            }
+        </ul>
+    </div>
+
+    <div class="well well-small">
+        <ul class="nav nav-list">
+            <li><span style="font-size: 16px; font-weight:500;">Sleeve:</span></li>
+            <li><a href="javascript:void(0)" class="search_item_sleeve" data-val="long"><span class="icon-chevron-right"></span>Long</a></li>
+            <li><a href="javascript:void(0)" class="search_item_sleeve" data-val="short"><span class="icon-chevron-right"></span>Short</a></li>
+        </ul>
+    </div>
+
+    <div class="well well-small">
+        <ul class="nav nav-list">
+            <li><span style="font-size: 16px; font-weight:500;">Pattern:</span></li>
+            @foreach (pattern pt in ViewBag.Pattern)
+            {
+                <li><a href="javascript:void(0)" class="search_item_pattern" data-val="@pt.id"><span class="icon-chevron-right"></span>@Capitalize(pt.name)</a></li>
+            }
+        </ul>
+    </div>
+
+    <div class="well well-small">
+        <ul class="nav nav-list">
+            <li><span style="font-size: 16px; font-weight:500;">Neckline:</span></li>
+            @foreach (neckline nc in ViewBag.Neckline)
+            {
+                <li><a href="javascript:void(0)" class="search_item_neckline" data-val="@nc.id"><span class="icon-chevron-right"></span>@Capitalize(nc.name)</a></li>
+            }
+        </ul>
+    </div>
+
+    <div class="well well-small">
+        <ul class="nav nav-list">
+            <li><span style="font-size: 16px; font-weight:500;">Pocket:</span></li>
+            @foreach (pocket pc in ViewBag.Pocket)
+            {
+                <li><a href="javascript:void(0)" class="search_item_pocket" data-val="@pc.id"><span class="icon-chevron-right"></span>@Capitalize(pc.name)</a></li>
+            }
+        </ul>
+    </div>
+
+
+
+
+    <div class="well well-small alert alert-warning cntr">
+        <h2>50% Discount</h2>
+        <p>
+            only valid for online order. <br><br><a class="defaultBtn" href="#">Click here </a>
+        </p>
+    </div>
+    <div class="well well-small"><a href="#"><img src="assets/img/paypal.jpg" alt="payment method paypal"></a></div>
+
+    <a class="shopBtn btn-block" href="#">Upcoming products <br><small>Click to view</small></a>
+    <br>
+    <br>
+    <ul class="nav nav-list promowrapper">
+        <li>
+            <div class="thumbnail">
+                <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                <img src="assets/img/bootstrap-ecommerce-templates.png" alt="bootstrap ecommerce templates">
+                <div class="caption">
+                    <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+                </div>
+            </div>
+        </li>
+        <li style="border:0"> &nbsp;</li>
+        <li>
+            <div class="thumbnail">
+                <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                <img src="assets/img/shopping-cart-template.png" alt="shopping cart template">
+                <div class="caption">
+                    <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+                </div>
+            </div>
+        </li>
+        <li style="border:0"> &nbsp;</li>
+        <li>
+            <div class="thumbnail">
+                <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                <img src="assets/img/bootstrap-template.png" alt="bootstrap template">
+                <div class="caption">
+                    <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+</div>
+

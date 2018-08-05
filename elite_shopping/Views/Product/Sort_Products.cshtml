@@ -1,0 +1,49 @@
+﻿
+@using elite_shopping.Models
+
+@{
+    int j = 0;
+
+    for (int i = 0; i <= (Model.Count / 3); i++)
+    {
+        j = 0;
+
+        <div class="row-fluid">
+            <ul class="thumbnails">
+                @foreach (product pr in Model)
+                {
+                    if (j < 3)
+                    {
+                        <li class="span4 product_list_new">
+                            <div class="thumbnail">
+                                <a href="/Product/Details/@pr.id" class="overlay"></a>
+                                <a class="zoomTool" href="/Product/Details/@pr.id" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                                <a href="/Product/Details/@pr.id" class="pr_image">
+                                @{ 
+                                    var pcs = elite_shopping.Classes.connection.el_entities.picture.Where(x => x.product_id == pr.id).ToList();
+                                    var url = pcs.Select(x => x.medium).FirstOrDefault();
+                                }
+                                    <img src="@url" alt="@pr.name">
+                                
+                                </a>
+                                <div class="caption cntr">
+                                    <p class="caption_product_new">@pr.name</p>
+                                    <p><strong> $@pr.price</strong></p>
+                                    <h4><a class="shopBtn" href="javascript:void(0)" title="add to cart"> Add to cart </a></h4>
+                                    <br class="clr">
+                                </div>
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    j++;
+                }
+            </ul>
+        </div>
+    }
+
+
+}
